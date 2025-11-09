@@ -7,6 +7,7 @@ async function fetchData(url, options = {}) {
     return await response.json();
   } catch (error) {
     console.error("An error occurred:", error);
+    throw error; // re-throw to propagate the error
   }
 }
 (async () => {
@@ -14,12 +15,10 @@ async function fetchData(url, options = {}) {
     name: "Binaya Maharjan",
     job: "Developer"
   };
-  const url = "https://reqres.in/api/users";
+  const url = "https://jsonplaceholder.typicode.com/users";
   const options = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user)
   };
   try {
