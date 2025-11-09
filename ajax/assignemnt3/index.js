@@ -7,20 +7,20 @@ async function fetchWithErrorHandling(url, options = {}) {
     const data = await response.json();
     console.log("Response data:", data);
   } catch (error) {
-    console.error("An error occurred:", error);
+    console.error("An error occurred:", error.message);
   }
 }
-fetchWithErrorHandling("https://reqres.in/api/unknown/23");
-fetchWithErrorHandling("https://reqres.in/api/unknown/23", {
+fetchWithErrorHandling("https://jsonplaceholder.typicode.com/users/1");
+fetchWithErrorHandling("https://jsonplaceholder.typicode.com/users", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ name: "Test", job: "Dev" })
 });
-fetchWithErrorHandling("https://reqres.in/api/unknown/23", {
+fetchWithErrorHandling("https://jsonplaceholder.typicode.com/users/1", {
   method: "PUT",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name: "Test", job: "Dev" })
+  body: JSON.stringify({ name: "Test Updated", job: "Developer" })
 });
-fetchWithErrorHandling("https://reqres.in/api/unknown/23", {
+fetchWithErrorHandling("https://jsonplaceholder.typicode.com/users/1", {
   method: "DELETE"
 });
